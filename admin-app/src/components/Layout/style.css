@@ -1,0 +1,26 @@
+.sidebar{
+    position: fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    background-color: #eee;
+    padding-top: 60px;
+    box-shadow: inset 0 0 2px grey;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    color:#fff;
+}
+.sidebar ul{
+    list-style: none;
+    width:100%;
+    padding: 0px ;
+
+}
+.sidebar ul li:hover, .sidebar ul li:hover a{
+    background-color: gray;
+    color:#fff;
+}

@@ -1,0 +1,49 @@
+ul > li{
+    display:inline-block;
+    position: relative;
+    padding-left:1rem
+}
+li > ul{
+    display:none;
+    position:absolute;
+    left:-50px;
+    text-align: left;
+    z-index:100;
+    
+   
+}
+ul li:hover{
+    background-color:#eee;
+    cursor: pointer;
+
+}
+ul li:hover > ul {
+    display:block;
+    width:100vw;  
+    border-radius: 10px;
+    background-color:#eee;
+
+
+} 
+
+li > ul > li{
+    display: block;
+    left:0px;
+       background-color:#eee;
+
+    padding:1rem;
+}
+
+li > ul >li > ul {
+    display:block;  
+    position:relative;
+    margin-left: 3rem;
+    cursor: pointer;
+
+}
+ul>li>ul>li{
+    font-weight: bold;
+}
+ul>li>ul>li>ul>li{
+    font-weight: 100;
+}
