@@ -1,61 +1,61 @@
-import { authConstants } from "../actions/constants"
+import { authConstants } from "../actions/constants";
 
 const initState = {
-    token:null,
-    user:{
-        firstName:'',
-        lastName:'',
-        email:'',
-        picture:'',
+    token: null,
+    user: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        picture: ''
     },
-    authenticate:false,
+    authenticate: false,
     authenticating: false,
-    error:null,
-    message:'',
-    loading:false
+    loading: false,
+    error: null,
+    message: ''
+};
 
-}
+export default (state = initState, action) => {
 
+    console.log(action);
 
-export default (state=initState,action)=>{
-  
-    switch(action.type){
+    switch (action.type) {
         case authConstants.LOGIN_REQUEST:
             state = {
                 ...state,
-                authenticating:true
+                authenticating: true
             }
             break;
         case authConstants.LOGIN_SUCCESS:
             state = {
                 ...state,
-                token:action.paylode.token,
-                user:action.paylode.user,
-                authenticate:true,
-                authenticating:false    
+                user: action.payload.user,
+                token: action.payload.token,
+                authenticate: true,
+                authenticating: false
             }
             break;
         case authConstants.LOGOUT_REQUEST:
-            state={
+            state = {
                 ...state,
-                laoding:true
+                loading: true
             }
             break;
         case authConstants.LOGOUT_SUCCESS:
-            state={
-                ...initState,
-                message:action.paylode.message,
-                loading:false
-               
+            state = {
+                ...initState
             }
             break;
         case authConstants.LOGOUT_FAILURE:
-            state={
+            state = {
                 ...state,
-                error: action.paylode.error
+                error: action.payload.error,
+                loading: false
             }
             break;
-    }
-    return state;
 
+    }
+
+
+    return state;
 }

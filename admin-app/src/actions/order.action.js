@@ -1,47 +1,47 @@
-import { orderConstants } from './constants';
-import axios from '../helpers/axios';
+import axios from "../helpers/axios";
+import { orderConstants } from "./constants";
 
-export const addtoorder = (product) =>{
-
-    return async (dispatch) =>{
-        console.log(product)
-        // dispatch({type:orderConstants.ADD_TO_ORDER_REQUEST})
-        
-        const res = await axios.post('/order/addtoorder', {orderItems:product});
-        console.log(res);
-        if(res.status==201){
-            dispatch({
-                type:orderConstants.ADD_TO_ORDER_REQUEST,
-                paylode:res.data
-            })
-        }
-        else
-        {
-            dispatch({type:orderConstants.ADD_TO_ORDER_FAILURE,
-                    paylode:res.data
-            })
-        }
+export const getCustomerOrders = () => {
+  return async (dispatch) => {
+    dispatch({ type: orderConstants.GET_CUSTOMER_ORDER_REQUEST });
+    try {
+      const res = await axios.post("/order/getCustomerOrders");
+      if (res.status === 200) {
+        const { orders } = res.data;
+        dispatch({
+          type: orderConstants.GET_CUSTOMER_ORDER_SUCCESS,
+          payload: { orders },
+        });
+      } else {
+        const { error } = res.data;
+        dispatch({
+          type: orderConstants.GET_CUSTOMER_ORDER_FAILURE,
+          payload: { error },
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
-}
+  };
+};
 
-export const getOrderItems = (product) =>{
-
-    return async (dispatch) =>{
-      
-        dispatch({type: orderConstants.GET_ORDER_ITEMS_REQUEST})
-        const res = await axios.get('/order');
-        console.log(res);
-        if(res.status==200){
-            dispatch({
-                type:orderConstants.GET_ORDER_ITEMS_SUCCESS,
-                paylode:res.data
-            })
-        }
-        else
-        {
-            dispatch({type:orderConstants.GET_ORDER_ITEMS_FAILURE,
-                    paylode:res.data
-            })
-        }
+export const updateOrder = (payload) => {
+  return async (dispatch) => {
+    dispatch({ type: orderConstants.UPDATE_CUSTOMER_ORDER_REQUEST });
+    try {
+      const res = await axios.post("/order/update", payload);
+      if (res.status === 201) {
+        dispatch({ type: orderConstants.UPDATE_CUSTOMER_ORDER_SUCCESS });
+        dispatch(getCustomerOrders());
+      } else {
+        const { error } = res.data;
+        dispatch({
+          type: orderConstants.UPDATE_CUSTOMER_ORDER_FAILURE,
+          payload: { error },
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
-}
+  };
+};
