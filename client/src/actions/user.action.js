@@ -3,14 +3,10 @@ import axios from '../helpers/axios'
 export const signup = (user) =>{
          
      return async (dispatch) =>{
-        console.log("befroe rquest")
         const res = await axios.post('/admin/signup',
         {
             ...user
         })
-
-        console.log("signup actions")
-        console.log(res)
 
         dispatch({
             type:userConstants.USER_REGISTER_REQUEST,

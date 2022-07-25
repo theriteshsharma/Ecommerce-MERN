@@ -1,50 +1,43 @@
-
-const Mongoose = require('mongoose');
-const User = require('./user');
-
-const productSchema = new Mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
-        trim:true
+const mongoose = require('mongoose');
+const productSchema = new mongoose.Schema({
+    name: { 
+        type: String, 
+        required: true, 
+        trim: true 
     },
-    slug:{
-        type:String,
-        required:true,
-        unique:true
+    slug: { 
+        type: String, 
+        required: true, 
+        unique: true 
     },
-    price:{
-        type:Number
+    price: { 
+        type: Number, 
+        required: true 
     },
-    description:{
-        type:String,
-        required:true,
-        trim:true
+    quantity: {
+        type: Number,
+        required: true
     },
-    quantity:{
-        type:Number,
-        required:true
+    description: {
+        type: String,
+        required: true,
+        trim: true
     },
-    offer:{
-        type:Number
-    },
-    productPictures:[
-        {img:{type:String}}
+    offer: { type: Number },
+    productPictures: [
+        { img: { type: String } }
     ],
-    reviews:{
-        userId: {type:  Mongoose.Schema.Types.ObjectId, ref:'User'},
-        review: {type:String}
-    },
-    category:{
-            type:  Mongoose.Schema.Types.ObjectId, 
-            ref:'Category' ,
-            required:true
-    },
-    createdBy:{
-        type: Mongoose.Schema.Types.ObjectId,
-        ref:'User'
-    }
+    reviews: [
+        {
+            userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+            review: String
+        }
+    ],
+    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    updatedAt: Date,
 
-},{timestamps:true})
+}, { timestamps: true });
 
-module.exports = Mongoose.model('Product',productSchema)
+
+module.exports = mongoose.model('Product', productSchema);

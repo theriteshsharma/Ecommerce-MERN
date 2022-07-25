@@ -8,6 +8,7 @@ import {signup} from "../../actions"
 
 function Signup(props) {
     const auth = useSelector(state => state.auth);
+    const user = useSelector(state => state.user);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -22,8 +23,8 @@ function Signup(props) {
             email,
             password
         }
-
         dispatch(signup(user));
+       
     }
 
     if(auth.authenticate){

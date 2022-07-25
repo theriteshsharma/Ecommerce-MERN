@@ -1,11 +1,9 @@
-const express = require('express')
-const {addtoorder, getOrders} = require('../controllers/orderController');
-const { requiresignin, userMiddleware } = require('../middleware/common');
-const router = express.Router();
+const { requireSignin, userMiddleware } = require("../common-middleware");
+const { addOrder, getOrders, getOrder } = require("../controller/order");
+const router = require("express").Router();
 
-router.post('/order/addtoorder',requiresignin, userMiddleware, addtoorder);
-router.get('/order',requiresignin, getOrders);
-
-//router.get('/category/',getCategory)
+router.post("/addOrder", requireSignin, userMiddleware, addOrder);
+router.get("/getOrders", requireSignin, userMiddleware, getOrders);
+router.post("/getOrder", requireSignin, userMiddleware, getOrder);
 
 module.exports = router;

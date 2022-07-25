@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Row, Col, Container, Dropdown , Navbar, DropdownButton } from "react-bootstrap";
+import { Card, Button, Row, Col, Container, Dropdown , Navbar, DropdownButton,Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addtocart } from "../../actions";
 import Layout from "../../components/Layout";
@@ -48,8 +48,8 @@ function Home() {
             return products.map((item, index) =>
             <Col md={3}>
                 <Card style={{ width: "100%", textAlign: "left" }} key={index}>
-                        <Card.Header style={ {maxHeight:"280px",overflow:"hidden"}} >
-                           <Card.Img src={imageUrl(item.productPictures[0].img)} variant="top"  />
+                        <Card.Header style={ {height:"280px",overflow:"hidden",display:"flex",alignItems:"Center",justifyContent:"Center"}} >
+                           <Card.Img src={imageUrl(item.productPictures[0].img)} variant="top" className={"img-fluid"} style={{maxHeight:"100%",objectFit:"contain"}} />
                         </Card.Header>
 
                             <Card.Body>
@@ -58,7 +58,7 @@ function Home() {
                                 <div style={{display:"flex",justifyContent:"space-between", alignItems:"center"}}>
                                 <h5>Rs.{item.price}</h5>
 
-                                <Button onClick={(e) =>handleAddToCart(item._id,item.price)}>Add to cart</Button>
+                                <Button onClick={(e) =>handleAddToCart(item._id,item.price)}><Image src={imageUrl("icons/cart.svg")}/></Button>
                                 {/* <Button style={{marginLeft:"1rem"}}>Buy Now</Button> */}
                                 </div>
                             </Card.Body>
@@ -77,7 +77,7 @@ function Home() {
                             </ul>
                         </Container>
                     </Navbar>
-                <Row className={`p-5 `}>
+                <Row className={` `}>
                     {renderProductCards(products.products)}
                 </Row>
             </Layout>
