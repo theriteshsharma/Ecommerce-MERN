@@ -3,7 +3,7 @@ import { Card, Button, Row, Col, Container, Dropdown , Navbar, DropdownButton,Im
 import { useDispatch, useSelector } from "react-redux";
 import { addtocart } from "../../actions";
 import Layout from "../../components/Layout";
-import { imageUrl } from "../../urlconfig";
+import { imageUrl } from "../../urlConfig";
 import './style.css'
 function Home() {
     const products = useSelector((state) => state.product);

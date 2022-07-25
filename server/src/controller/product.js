@@ -5,15 +5,16 @@ const Category = require("../models/category");
 
 exports.createProduct = (req, res) => {
   //res.status(200).json( { file: req.files, body: req.body } );
-
+  console.log(req.files);
   const { name, price, description, category, quantity, createdBy } = req.body;
   let productPictures = [];
-
+  console.log(res.files)
   if (req.files.length > 0) {
     productPictures = req.files.map((file) => {
-      return { img: file.location };
+      return { img: file.filename };
     });
   }
+  console.log(productPictures);
 
   const product = new Product({
     name: name,

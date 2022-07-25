@@ -36,6 +36,7 @@ function Product(props) {
     for (let pic of pictures) {
       form.append("productPictures", pic);
     }
+    console.log(form);
     dispatch(addProduct(form));
     setName('')
     setPrice('')

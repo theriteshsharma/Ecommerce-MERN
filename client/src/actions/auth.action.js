@@ -8,6 +8,7 @@ export const signup = (user) => {
     try {
       dispatch({ type: authConstants.SIGNUP_REQUEST });
       res = await axios.post(`/signup`, user);
+      console.log(res);
       if (res.status === 201) {
         dispatch({ type: authConstants.SIGNUP_SUCCESS });
         const { token, user } = res.data;
@@ -25,7 +26,7 @@ export const signup = (user) => {
         dispatch({ type: authConstants.SIGNUP_FAILURE, payload: { error } });
       }
     } catch (error) {
-      const { data } = error.response;
+      const { data } = error;
       dispatch({
         type: authConstants.SIGNUP_FAILURE,
         payload: { error: data.error },
@@ -40,7 +41,7 @@ export const login = (user) => {
     const res = await axios.post(`/signin`, {
       ...user,
     });
-
+    console.log(res);
     if (res.status === 200) {
       const { token, user } = res.data;
       localStorage.setItem("token", token);

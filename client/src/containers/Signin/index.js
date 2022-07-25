@@ -22,7 +22,7 @@ function Signin(props) {
             email,
             password
         }
-        
+        console.log(user);
         dispatch(login(user));
     }
 
