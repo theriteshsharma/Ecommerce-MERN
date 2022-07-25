@@ -1,18 +1,21 @@
-import React from "react";
-import Header from "../Header";
-import { Col, Container, Row } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import Header from '../Header';
+import MenuHeader from '../MenuHeader';
 
-import "./style.css";
-export default function Layout(props) {
-  return (
+/**
+* @author
+* @function Layout
+**/
+
+const Layout = (props) => {
+  return(
     <>
-      <Header></Header>
-      <Container fluid>
-        {
-          props.children
-        }
-      </Container>
+        <Header />
+        <MenuHeader />
+        {props.children}
     </>
-  );
-}
+   )
+
+ }
+
+export default Layout

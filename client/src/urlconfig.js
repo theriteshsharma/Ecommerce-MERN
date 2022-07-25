@@ -1,5 +1,6 @@
-export const api = "http://localhost:3000/api";
-
-export const imageUrl = (url) =>{
-    return( "http://localhost:3000/public/"+url);
-}
+//const baseUrl = "https://flipkart-rest-server.herokuapp.com";
+const baseUrl = "https://localhost:2000";
+export const api = `${baseUrl}/api`;
+export const generatePublicUrl = (fileName) => {
+  return `${baseUrl}/public/${fileName}`;
+};
