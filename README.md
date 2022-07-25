@@ -197,7 +197,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@riteshstwt](https://twitter.com/riteshstwt) - rsharma3499@gmail.com
+Ritesh Sharma - [@riteshstwt](https://twitter.com/riteshstwt) - rsharma3499@gmail.com
 
 Project Link: [https://github.com/theriteshsharma/Ecommerce-MERN](https://github.com/theriteshsharma/Ecommerce-MERN)
 
